@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib import messages
+# from django.contrib import messages
 from django.views import generic
-from .models import Category, Phrase, Language
+from .models import Category, Phrase
 
 # Home.
 class HomeView(generic.ListView):
@@ -11,13 +11,16 @@ class HomeView(generic.ListView):
 
 def home(request):
     '''Home.'''
-    categories = Category.objects.all()
-    return render(request, 'main/home.html', {'categories': categories})
+    # categories = Category.objects.all()
+    # languages = Language.objects.all()
+    return render(request, 'main/home.html', {})
 
 def view_category(request, slug):
-    '''Category'''
+    '''Category.'''
     category = Category.objects.get(slug=slug)
     phrases = Phrase.objects.filter(category=category)
     # language = Language.objects.get()
     count = phrases.count()
     return render(request, 'main/view-category.html', {'phrases': phrases, 'category': category, 'count': count})
+
+

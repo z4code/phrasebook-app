@@ -9,21 +9,21 @@
         <table class="table">
             <thead class="table-secondary">
                 <tr>
-                    <th class="fs-5 text-uppercase">{{ category.language }}</th>
+                    <th class="fs-5 text-uppercase">Uzbek</th>
                     <th class="fs-5 text-uppercase">English</th>
                 </tr>
             </thead>
             <tbody>
                 {% for phrase in phrases %}
                     <tr>
-                        <td>{{ phrase.translation }}</td>
+                        <td>{{ phrase.uz }}</td>
                         <td class="d-flex align-items-center gap-2">
                             {% if phrase.audio %}
                                 <button class="btn rounded-circle btn-sm btn-success" id="phrase-{{ phrase.id }}" type="button" onclick="listen_('{{ phrase.audio.url }}')">
                                     <i class="bi bi-play-fill"></i>
                                 </button>
                             {% endif %}
-                            <label for="phrase-{{ phrase.id }}">{{ phrase.text }}</label>
+                            <label for="phrase-{{ phrase.id }}">{{ phrase.en }}</label>
                         </td>
                     </tr>
                 {% endfor %}
