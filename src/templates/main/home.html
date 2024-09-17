@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <h2 class="display-5 fw-bold">Categories</h2>
+    <p class="lead"></p>
+    {% if categories %}
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            {% for category in categories %}
+                <div class="col d-grid">
+                    {% if category.icon %}
+                        <a class="btn btn-lg btn-outline-dark text-start" href="{% url 'view_category' category.slug %}">
+                            <i class="{{ category.icon }}"></i>
+                            {{ category.name }}
+                        </a>
+                    {% else %}
+                        <a class="btn btn-lg btn-outline-dark text-start" href="{% url 'view_category' category.slug %}">{{ category.name }}</a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6 offset-md-3 bg-dark text-light p-5 rounded">
+            <h2 class="display-5 fw-bold mb-5">Register</h2>
+            <form class="d-grid" method="post">
+                {% csrf_token %}
+                {{ form|safe }}
+                <button class="btn btn-lg btn-primary mt-3" type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

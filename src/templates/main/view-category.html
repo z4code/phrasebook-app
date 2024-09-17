@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Category{% endblock %}
+
+{% block content %}
+    <h2 class="display-5 fw-bold">{{ category.name }}</h2>
+    <p class="lead">Phrases of count ({{ count }})</p>
+    {% if phrases %}
+        <table class="table">
+            <thead class="table-secondary">
+                <tr>
+                    <th class="fs-5 text-uppercase">{{ category.language }}</th>
+                    <th class="fs-5 text-uppercase">English</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for phrase in phrases %}
+                    <tr>
+                        <td>{{ phrase.translation }}</td>
+                        <td class="d-flex align-items-center gap-2">
+                            {% if phrase.audio %}
+                                <button class="btn rounded-circle btn-sm btn-success" id="phrase-{{ phrase.id }}" type="button" onclick="listen_('{{ phrase.audio.url }}')">
+                                    <i class="bi bi-play-fill"></i>
+                                </button>
+                            {% endif %}
+                            <label for="phrase-{{ phrase.id }}">{{ phrase.text }}</label>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}
